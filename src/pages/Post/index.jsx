@@ -14,8 +14,6 @@ const Post=()=>{
 			text: e.target[0].value,
 			user: id
 		}
-
-		console.log(userInput);
 		
 		fetch(`http://localhost:1337/posts`, {
 			method: 'post',
