@@ -16,7 +16,21 @@ main{
                 justify-content: space-between;
                 background-color: darkslategray;
                 color: whitesmoke;
+
+                .likebuttons{
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: space-between;
+
+                    .likecount{
+                        margin-right: 10px;
+                    }
+                }
             }
         }
     }
+}
+
+#editform{
+    margin-top: 20px;
 }

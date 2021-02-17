@@ -39,7 +39,7 @@ const Home =() => {
 		}
 
     useEffect(()=>{getPostList()},[]);
-		useEffect(()=>{getPostCount()},[]);
+		useEffect(()=>{getPostCount()},[postList]);
 		
     return(
         <>

@@ -43,11 +43,11 @@ const Profile =() => {
 	return(
 		<>
 			<div className="card">
-				<h2>Profile</h2>
+				<h2>Gestion de votre compte:</h2>
 				<p>{username}</p>
 				<p>{email}</p>
 			</div>
-			<div>
+			<div id="editform">
 				<h3>Modifier votre profile?</h3>
 				<form onSubmit={handleUpdate}>
 							<div className="form-group">
