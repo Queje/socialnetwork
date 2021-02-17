@@ -1,3 +1,4 @@
+import './style.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -14,6 +15,8 @@ import Navbar from './components/Navbar';
 import { Provider } from 'react-redux';
 import Reducer from './stores/Reducer';
 import PrivateRoute from './components/PrivateRoute';
+import Post from './pages/Post';
+import OtherProfile from './pages/OtherProfile';
 
 const App =() => {
 
@@ -22,18 +25,22 @@ const App =() => {
 			<Provider store={Reducer}>
 				<Router>
 					<Navbar/>
-					<Switch>
-						<Route path="/" exact>
-							<Home />
-						</Route>
-						<Route path="/register">
-							<Register />
-						</Route>
-						<Route path="/login">
-							<Login />
-						</Route>
-						<PrivateRoute path="/protected" component={Profile} />
-					</Switch>
+					<main>
+						<Switch>
+							<Route path="/" exact>
+								<Home />
+							</Route>
+							<Route path="/register">
+								<Register />
+							</Route>
+							<Route path="/login">
+								<Login />
+							</Route>
+							<PrivateRoute exact path="/profile" component={Profile} />
+							<PrivateRoute path="/profile/:authorID" component={OtherProfile} />
+							<PrivateRoute path="/post" component={Post} />
+						</Switch>
+					</main>
 				</Router>
 			</Provider>
 		</>

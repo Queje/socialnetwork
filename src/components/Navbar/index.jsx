@@ -22,7 +22,7 @@ const Navbar =() => {
 	}
 
 	return (
-		<nav className="navbar navbar-expand-lg navbar-light bg-dark">
+		<nav className="navbar navbar-expand-lg navbar-dark bg-dark">
 			<Link className="navbar-brand" to="/">Home</Link>
 			<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 				<span className="navbar-toggler-icon"></span>
@@ -32,7 +32,10 @@ const Navbar =() => {
 					<Link className="nav-link" to="/register">Register</Link>
 				</div>
                 <div className="navbar-nav">
-					<Link className="nav-link" to="/Protected">Profile</Link>
+					<Link className="nav-link" to="/profile">Profile</Link>
+				</div>
+				<div className="navbar-nav">
+					<Link className="nav-link" to="/post">New Post</Link>
 				</div>
 			</div>
 			<div className="navbar-nav">
