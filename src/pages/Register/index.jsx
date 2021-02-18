@@ -25,6 +25,7 @@ const Register =() => {
 		})
 		.then((response) => response.json())
 		.then ((response) => {
+			if (response.user && response.user.confirmed) {
 			Cookies.set('token', response.jwt);
 			history.push('/')
 			dispatch(CurrentUser({
@@ -32,7 +33,10 @@ const Register =() => {
 				username: response.user.username,
 				email: response.user.email,
 				loggedin: true
-			}))
+			}))} else {
+				alert(response.data[0].messages[0].message)
+				history.push('/register')
+			}
 		})
 	}
 
@@ -42,17 +46,17 @@ const Register =() => {
 					<form onSubmit={handleSubmit}>
 							<div className="form-group">
 									<label>Username</label>
-									<input type="text" className="form-control" id="username" aria-describedby="username"/>
+									<input type="text" className="form-control" id="username" aria-describedby="username" required/>
 									<small className="form-text text-muted">The one you will be using so choose well.</small>
 							</div>
 							<div className="form-group">
 									<label >Email address</label>
-									<input type="email" className="form-control" id="userEmail" aria-describedby="userEmail"/>
+									<input type="email" className="form-control" id="userEmail" aria-describedby="userEmail" required/>
 									<small className="form-text text-muted">We'll never share your email with anyone else.</small>
 							</div>
 							<div className="form-group">
 									<label >Password</label>
-									<input type="password" className="form-control" id="userPassword"/>
+									<input type="password" className="form-control" id="userPassword" required/>
 							</div>
 							<button type="submit" className="btn btn-primary">Submit</button>
 					</form>

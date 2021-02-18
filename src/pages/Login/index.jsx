@@ -22,17 +22,22 @@ const Login =() => {
 			},
 			body: JSON.stringify(userInput)
 		})
-		.then((response) => response.json())
+		.then ((response) => response.json())
 		.then ((response) => {
-			Cookies.set('token', response.jwt);
-			console.log("cookie:"+Cookies.get('token'))
-			history.push('/')
-			dispatch(CurrentUser({
-				id: response.user.id,
-				username: response.user.username,
-				email: response.user.email,
-				loggedin: true
-			}))
+			if (response.user && response.user.confirmed) {
+				Cookies.set('token', response.jwt)
+				console.log("cookie:"+Cookies.get('token'))
+				history.push('/')
+				dispatch(CurrentUser({
+					id: response.user.id,
+					username: response.user.username,
+					email: response.user.email,
+					loggedin: true
+				}))
+			} else {
+				alert(response.data[0].messages[0].message)
+				history.push('/login')
+			}
 		})
 	}
 
@@ -42,11 +47,11 @@ const Login =() => {
 				<form onSubmit={handleLogin}>
 					<div className="form-group">
 						<label>Username / Email</label>
-						<input type="text" className="form-control" id="username" aria-describedby="username"/>
+						<input type="text" className="form-control" id="username" aria-describedby="username" required/>
 					</div>
 					<div className="form-group">
 						<label >Password</label>
-						<input type="password" className="form-control" id="userPassword"/>
+						<input type="password" className="form-control" id="userPassword" required/>
 					</div>
 					<button type="submit" className="btn btn-primary">Submit</button>
 				</form>

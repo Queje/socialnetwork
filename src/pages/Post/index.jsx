@@ -35,7 +35,7 @@ const Post=()=>{
 			<h2>New Post:</h2>
 			<form onSubmit={handlePost}>
 				<div className="form-group">
-					<textarea className="form-control" id="post" rows="3"></textarea>
+					<textarea className="form-control" id="post" rows="3" required></textarea>
 				</div>
 				<button type="submit" className="btn btn-primary">Submit</button>
 			</form>
