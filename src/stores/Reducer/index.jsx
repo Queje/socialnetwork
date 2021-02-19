@@ -4,15 +4,14 @@ const initialState = {
     id: "not logged in",
     username: "not logged in",
     email: "not logged in",
-    loggedin: false
  }
 
 const Reducer = (state , payload) => {
-    const { type, id, username, email, loggedin } = payload;
+    const { type, id, username, email } = payload;
 
     switch(type) {
         case 'CurrentUser':
-            return state = {id, username, email, loggedin};
+            return state = {id, username, email};
         default:
             return state = initialState;
     }

@@ -1,12 +1,10 @@
 import {Link, useHistory} from 'react-router-dom';
 import Cookies from 'js-cookie';
-import { useSelector, useDispatch} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import CurrentUser from '../../stores/CurrentUser';
 
 const Navbar =() => {
 	const history = useHistory();
-	const getCurrentUser = (state) => state;
-	const {loggedin} = useSelector(getCurrentUser);
 	const dispatch = useDispatch();
 
 	const handleLogout=(e)=>{
@@ -16,8 +14,7 @@ const Navbar =() => {
 		dispatch(CurrentUser({
 			id: "not logged in",
 			username: "not logged in",
-			email: "not logged in",
-			loggedin: false
+			email: "not logged in"
 		}))
 	}
 

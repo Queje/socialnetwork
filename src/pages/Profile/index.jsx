@@ -35,7 +35,6 @@ const Profile =() => {
 				id: response.id,
 				username: response.username,
 				email: response.email,
-				loggedin: true
 			}))
 		});
 	}

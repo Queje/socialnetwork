@@ -2,13 +2,11 @@ import { useState } from "react";
 import { useEffect } from "react";
 import Cards from '../../components/Cards';
 import Cookies from 'js-cookie';
-import { useSelector} from 'react-redux';
 
 const Home =() => {
-    const [postList, setPostList]= useState('');
-		const [postCount, setPostCount]= useState('');
-		const getCurrentUser = (state) => state;
-		const {loggedin, username} = useSelector(getCurrentUser);
+  const [postList, setPostList]= useState('');
+	const [postCount, setPostCount]= useState('');
+		
 
     const getPostList = () => {
       fetch(`http://localhost:1337/posts`, {

@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 
 const Cards =({article , refreshList, postList}) => {
 	const getCurrentUser = (state) => state;
-	const {loggedin, id, username} = useSelector(getCurrentUser);
+	const {id, username} = useSelector(getCurrentUser);
 	const [likeStatus, setLikeStatus] = useState({
 		id: article.id,
 		status: false

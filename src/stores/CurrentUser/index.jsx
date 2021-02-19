@@ -1,10 +1,9 @@
-const CurrentUser = ({id, username, email, loggedin}) => {
+const CurrentUser = ({id, username, email}) => {
     return {
         type: 'CurrentUser',
         id: id,
         username: username,
         email: email,
-        loggedin: loggedin
     }
 }
 

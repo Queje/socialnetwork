@@ -32,7 +32,6 @@ const Login =() => {
 					id: response.user.id,
 					username: response.user.username,
 					email: response.user.email,
-					loggedin: true
 				}))
 			} else {
 				alert(response.data[0].messages[0].message)
