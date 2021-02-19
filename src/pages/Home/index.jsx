@@ -8,7 +8,7 @@ const Home =() => {
     const [postList, setPostList]= useState('');
 		const [postCount, setPostCount]= useState('');
 		const getCurrentUser = (state) => state;
-		const {loggedin} = useSelector(getCurrentUser);
+		const {loggedin, username} = useSelector(getCurrentUser);
 
     const getPostList = () => {
       fetch(`http://localhost:1337/posts`, {
@@ -24,7 +24,7 @@ const Home =() => {
     }
 
 		const getPostCount =() => {
-			(loggedin === true) && 
+			(Cookies.get('token')) && 
 			fetch(`http://localhost:1337/posts/count`, {
 				method: 'get',
 				headers: {
@@ -39,27 +39,27 @@ const Home =() => {
 		}
 
     useEffect(()=>{getPostList()},[]);
-	useEffect(()=>{getPostCount()},[postList]);
+		useEffect(()=>{getPostCount()},[postList]);
 		
     return(
         <>
-			<h1>The Social Network</h1>
-			<p>This website is a training to Redux and React. We use auth and routing to create a small social media website.</p>
-			<section>
-				<h2>What's up people?</h2>
-					{(loggedin===true) && 
-						<small> {postCount} posts are trending</small>
-					}
-					{(postList) &&
-						<ul className="cardlist"> 
-							{
-								postList.map((article) => (
-									<Cards article={article} key={article.id} refreshList={setPostList} postList={postList}/>
-								))
+					<h1>The Social Network</h1>
+					<p>This website is a training to Redux and React. We use auth and routing to create a small social media website.</p>
+					<section>
+						<h2>What's up people?</h2>
+							{(Cookies.get('token')) && 
+								<small> {postCount} posts are trending</small>
 							}
-						</ul>
-					}
-			</section>
+							{(postList) &&
+								<ul className="cardlist"> 
+									{
+										postList.map((article) => (
+											<Cards article={article} key={article.id} refreshList={setPostList} postList={postList}/>
+										))
+									}
+								</ul>
+							}
+					</section>
         </>
     )
 }

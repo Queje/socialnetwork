@@ -32,14 +32,14 @@ const Navbar =() => {
 					<Link className="nav-link" to="/register">Register</Link>
 				</div>
                 <div className="navbar-nav">
-					<Link className="nav-link" to="/profile">Your Account</Link>
+					<Link className="nav-link" to="/profile/me">Your Account</Link>
 				</div>
 				<div className="navbar-nav">
 					<Link className="nav-link" to="/post">New Post</Link>
 				</div>
 			</div>
 			<div className="navbar-nav">
-				{(loggedin===true) ? (
+				{(Cookies.get('token')) ? (
 					<button className="btn btn-outline-secondary" onClick={handleLogout}>Log out</button>
 				) : ( 
 					<Link className="btn btn-outline-secondary" to="/login">Log in</Link>

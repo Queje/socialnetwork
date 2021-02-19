@@ -82,7 +82,7 @@ const Cards =({article , refreshList, postList}) => {
 	}
 
 	const getLikesList =(article) => {
-		(loggedin) &&
+		(Cookies.get('token')) &&
 		fetch(`http://localhost:1337/posts/${article.id}`, {
 			method: 'get',
 			headers: {
@@ -113,12 +113,12 @@ const Cards =({article , refreshList, postList}) => {
 		}
 	}
 
-	useEffect(() => getLikesList(article), [Cards])
+	useEffect(() => getLikesList(article), [])
 
 	return (
 		<li className="card">
 			<div className="card-header">
-				{(loggedin===true) && 
+				{(Cookies.get('token')) && 
 					<>
 						<Link to={`/profile/${article.user.id}`}>{article.user.username}</Link>
 						<div className="likebuttons">

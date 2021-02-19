@@ -19,4 +19,5 @@ const Reducer = (state , payload) => {
     return state;
 }
 
-export default createStore(Reducer);
+export default createStore(Reducer, 
+    +  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
